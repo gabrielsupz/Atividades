@@ -1,5 +1,8 @@
 package Curso.exercicios.Atividade3;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Atividade3 {
 	public static void main(String[] args) {
 
@@ -10,13 +13,9 @@ public class Atividade3 {
 		Pessoa renan = new Pessoa("Renan Sparrow", 43, 50, 1.78);
 
 		System.out.println(jilberto.getIMC());
-		System.out.println(" ");
-		System.out.println(ana.getIMC());
-		System.out.println(" ");
+		System.out.println(ana.getIMC());	
 		System.out.println(algusto.getIMC());
-		System.out.println(" ");
 		System.out.println(gabriel.getIMC());
-		System.out.println(" ");
 		System.out.println(renan.getIMC());
 
 	}
@@ -37,27 +36,27 @@ class Pessoa {
 	}
 
 	public String getIMC() {
-		double IMC = this.weight / (height * height);
+		double IMCDouble = this.weight / (height * height);
 		String message = "";
-
-		if (IMC >= 40.0) {
+		BigDecimal IMC = new BigDecimal(IMCDouble).setScale(2, RoundingMode.HALF_DOWN);
+		if (IMCDouble >= 40.0) {
 			message = "Obesidade classe 3";
 		}
 
-		if (IMC > 35.0 && IMC <= 39.9) {
+		if (IMCDouble > 35.0 && IMCDouble <= 39.9) {
 			message = "Obesidade classe 2";
 		}
-		if (IMC > 30.0 && IMC <= 34.9) {
+		if (IMCDouble > 30.0 && IMCDouble <= 34.9) {
 			message = "Obesidade classe 1";
 		}
-		if (IMC > 25.0 && IMC <= 29.9) {
+		if (IMCDouble > 25.0 && IMCDouble <= 29.9) {
 			message = "Excesso de peso ";
 		}
 
-		if (IMC > 18.5 && IMC <= 24.9) {
+		if (IMCDouble > 18.5 && IMCDouble <= 24.9) {
 			message = "Peso normal ";
 		}
-		if (IMC < 18.5) {
+		if (IMCDouble < 18.5) {
 			message = "Abaixo do peso normal ";
 		}
 
